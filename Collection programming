@@ -1,1 +1,16 @@
-
+byAge:
+    public static Map<Integer, String> byAge(Map<String, Integer> age, int min, int max) {
+        Map<Integer, String> sort = new TreeMap<>();
+        for (String name : age.keySet()) {
+            int ages = age.get(name);
+            if (ages <= max && ages >= min) {
+                if (sort.containsKey(ages)) {
+                    sort.put(ages, sort.get(ages) + " and " + name);
+                } else {
+                    sort.put(ages, name);
+                }
+            }
+        }
+        return sort;
+    }
+    
