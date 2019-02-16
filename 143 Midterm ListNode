@@ -6,3 +6,8 @@
         list.next = temp.next;
         temp.next = null;
 002:
+        p.next.next.next = q.next;
+        q.next = p.next;
+        p.next = null;
+        
+        
