@@ -1,0 +1,8 @@
+001:
+        list.next.next.next.next = temp.next;
+        temp.next = list.next.next.next.next.next;
+        temp.next.next = list.next.next.next;
+        temp.next.next.next.next = list.next.next;
+        list.next = temp.next;
+        temp.next = null;
+002:
