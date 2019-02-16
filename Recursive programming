@@ -1,0 +1,37 @@
+collapseSequence:
+    public static String collapseSequence(String str, char letter) {
+        return collapseSequence(str, letter, 0);
+    }
+
+    private static String collapseSequence(String str, char letter, int index) {
+        if (index == 0) {
+            return str.charAt(0) + collapseSequence(str, letter, index + 1);
+        } else if (index == str.length()) {
+            return "";
+        } else {
+            char cur = str.charAt(index);
+            if (cur == letter && cur == str.charAt(index - 1)) {
+                return collapseSequence(str, letter, index + 1);
+            } else {
+                return cur + collapseSequence(str, letter, index + 1);
+            }
+        }
+    }
+    
+commonChars:
+    public static String commonChars(String one, String two) {
+        if (one.length() != two.length()) {
+            throw new IllegalArgumentException();
+        }
+        return commonChars(one, two, 0);
+    }
+
+    private static String commonChars(String one, String two, int index) {
+        if (index == one.length()) {
+            return "";
+        }
+        if (one.charAt(index) == two.charAt(index)) {
+            return one.charAt(index) + commonChars(one, two, index + 1);
+        }
+        return '.' + commonChars(one, two, index + 1);
+    }
