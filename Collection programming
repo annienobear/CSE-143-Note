@@ -14,3 +14,14 @@ byAge:
         return sort;
     }
     
+cancelCourse:
+    public static Set<String> cancelCourse (String course, Map<String, Set<String>> sche) {
+        Set<String> sort = new TreeSet<>();
+        for (String name : sche.keySet()) {
+            if (sche.get(name).contains(course)) {
+                sort.add(name);
+                sche.get(name).remove(course);
+            }
+        }
+        return sort;
+    }
