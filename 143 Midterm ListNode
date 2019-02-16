@@ -10,4 +10,15 @@
         q.next = p.next;
         p.next = null;
         
+        q.next = p.next.next;
+        p.next.next = q.next.next;
         
+        p.next.next.next = q.next;
+        q.next = p.next.next;
+        p.next.next = q.next.next.next;
+        
+        p.next.next.next.next = q.next;
+        q.next = p.next.next;
+        q.next.next.next.next.next = p.next;
+        p.next = q.next.next.next.next;
+003: 
