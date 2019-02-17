@@ -25,3 +25,22 @@ cancelCourse:
         }
         return sort;
     }
+    
+commonFirstLetters: 
+    public static Set<String> commonFirstLetters(List<String> words) {
+        Map<Character, Integer> contains = new TreeMap<>();
+        Set<String> sort = new TreeSet<>();
+        for (String name : words) {
+            char first = name.toLowerCase().charAt(0);
+            if (!contains.keySet().contains(first)){
+                contains.put(first, 0);
+            }
+            contains.put(first, contains.get(first) + 1);
+        }
+        for (Character firstL : contains.keySet()) {
+            if (contains.get(firstL) > 1) {
+                sort.add( ""+ firstL);
+            }
+        }
+        return sort;
+    }
