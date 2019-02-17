@@ -1,1 +1,13 @@
-
+copyMultiple: 
+    public static int[] copyMultiple(int[] nums, int times) {
+        if (times < 1) {
+            throw new IllegalArgumentException();
+        }
+        int[] sort = new int[times * 2];
+        for (int i = 0; i < times; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                sort[i * nums.length + j] = nums[j];
+            }
+        }
+        return sort;
+    }
