@@ -9,6 +9,7 @@
 - 如果实在算不明白的话把每个recursion的数字带进去 然后把method写下来 写到最后就是
   - method（x）+method（x+1）之类的，然后每个method再去解顺序就不会错
   - 见下图
+  recursion.png
 - 除非规律极其明显 否则不建议跳步
 
 ### llinked list node manipulation
