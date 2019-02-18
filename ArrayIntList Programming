@@ -11,3 +11,25 @@ copyMultiple:
         }
         return sort;
     }
+
+
+public void mirror(){
+    int currentSize = size;
+    for (int i=0; i<currentSize;i++){
+        elementData[size]=elementData[currentSize-1-i];
+        size++;
+    }
+}
+
+public void removeFront(int n){
+    if(n<0||n>size){
+        throw new IllegalArgumentException();
+    }
+    for (int i=0; i<n; i++){
+        for(int j=0;j<size;j++){
+            elementData[j]=elementData[j+1];
+        }
+        size--;
+    }
+    
+}
