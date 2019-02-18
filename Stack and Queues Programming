@@ -1,1 +1,105 @@
+May be redundant but works. 
 
+public void expunge(Stack<Integer> stack){
+    if(stack.isEmpty()){
+    }else{
+        Stack<Integer> temp = new Stack<Integer>();
+        int prev = stack.pop();
+        temp.push(prev);
+        while(!stack.isEmpty()){
+            int num = stack.pop();
+            if(num>=prev){
+                temp.push(num);
+                prev=num;
+            }
+        }
+        while(!temp.isEmpty()){
+            stack.push(temp.pop());
+        }
+    }
+}
+
+public int removeMin(Stack<Integer> stack){
+    Queue<Integer> queue = new LinkedList<Integer>();
+    int min=stack.pop();
+    queue.add(min);
+    while (!stack.isEmpty()){
+        int num = stack.pop();
+        if (num <min){
+            min=num;
+        }
+        queue.add(num);
+    }
+    while (!queue.isEmpty()){
+        int num = queue.remove();
+        if(num!=min){
+            stack.push(num);
+        }
+    }
+    while(!stack.isEmpty()){
+        int num =stack.pop();
+        queue.add(num);
+    }
+    while(!queue.isEmpty()){
+        int num =queue.remove();
+        stack.push(num);
+    }
+    
+    return min;
+}
+
+public boolean equals(Stack<Integer> stack1, Stack<Integer> stack2){
+    Stack<Integer> stack = new Stack<Integer>();
+    if(stack1.size()!=stack2.size()){
+        return false;
+    }
+    while(!stack1.isEmpty()){
+        int num1=stack1.pop();
+        int num2=stack2.pop();
+        stack.push(num1);
+        stack.push(num2);
+        if(num1!=num2){
+            while(!stack.isEmpty()){
+                int num4=stack.pop();
+                int num3=stack.pop();
+                stack1.push(num3);
+                stack2.push(num4);
+            }
+            return false;
+        }
+    }
+    while(!stack.isEmpty()){
+        int num4=stack.pop();
+        int num3=stack.pop();
+        stack1.push(num3);
+        stack2.push(num4);
+    }
+    return true;
+}
+
+public boolean isConsecutive(Stack<Integer> stack){
+    Queue<Integer> queue = new LinkedList<Integer>();
+    boolean result=true;
+    int prev = stack.pop();
+    queue.add(prev);
+    while (!stack.isEmpty()){
+        int num = stack.pop();
+        if(num!=prev-1){
+            result=false;
+        }
+        queue.add(num);
+        prev=num;
+    }
+    int count = 0;
+    while (!queue.isEmpty()){
+        stack.push(queue.remove());
+        count+=1;
+    }
+    for (int i=0; i<count; i++){
+        queue.add(stack.pop());
+    }
+    while (!queue.isEmpty()){
+        stack.push(queue.remove());
+    }
+    return result;
+}
